@@ -58,6 +58,7 @@ class SignIn extends React.Component {
                         value={this.state.email}
                         label='email'
                         required
+                        autoComplete='off'
                     />
                     
                     <FormInput
@@ -67,6 +68,7 @@ class SignIn extends React.Component {
                         handleChange={this.handleChange}
                         label='password'
                         required
+                        autoComplete='off'
                     />
 
                     <div className='buttons'>
