@@ -1,17 +1,23 @@
 import React from 'react';
 
+//redux
 import { connect } from 'react-redux';
 
+//router
 import { Link } from 'react-router-dom';
 
-// logo
+//logo
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-// scss
+//scss
 import './header.style.scss';
 
 //utils
 import { auth } from '../../firebase/firebase.utils';
+
+//components
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropDown from '../cart-dropdown/cart-dropdown.component';
 
 
 const Header = ({ currentUser }) => (
@@ -30,7 +36,9 @@ const Header = ({ currentUser }) => (
                 :
                 <Link to='/signin'>SIGN IN</Link>
             }
+            <CartIcon />
         </div>
+        <CartDropDown />
     </div>
 );
 
