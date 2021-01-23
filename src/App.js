@@ -5,6 +5,9 @@ import './App.css';
 //redux
 import { connect } from 'react-redux';
 
+//redux's selectors
+import { selectCurrentUser } from './redux/user/user.selector';
+
 //actions
 import { setCurrentUser } from './redux/user/user.action';
 
@@ -15,6 +18,7 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 
 //components
 import Header from './components/header/header.component';
@@ -55,7 +59,8 @@ class App extends Component {
   
           <Switch >
             <Route exact path={'/'} component={HomePage}/>
-            <Route exact path={'/shop'} component={ShopPage}/>
+            <Route path={'/shop'} component={ShopPage}/>
+            <Route exact path={'/checkout'} component={CheckoutPage}/>
             <Route
               exact
               path='/signin'
@@ -74,8 +79,8 @@ class App extends Component {
   
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = state => ({
+  currentUser: selectCurrentUser(state)
 })
 
 const mapDispatchToProps = dispatch => ({
