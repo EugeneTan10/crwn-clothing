@@ -25,12 +25,13 @@ import Header from './components/header/header.component';
 
 
 
+
 class App extends Component {
 
   unsubcribeFromAuth = null;
   
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser} = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -45,6 +46,7 @@ class App extends Component {
       }
 
       setCurrentUser(userAuth);
+      
     });
   }
 
@@ -85,6 +87,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
+  
 });
 
 export default connect(
